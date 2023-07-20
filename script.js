@@ -32,14 +32,40 @@ const letra = {
     De Él me arrebatará<br>
     Hasta que Él venga otra vez<br>
     En Su poder me sostendré`],
-    1:[`verso uno de canción dos`]
+    1:[`verso 1 canción 2<br>
+        verso 1 canción 2<br>
+        verso 1 canción 2<br>
+        verso 1 canción 2`,
+        `verso 2 canción 2<br>
+        verso 2 canción 2<br>
+        verso 2 canción 2<br>
+        verso 2 canción 2`]
 }
-let index = 0
+let indexCanciones = 0
+let indexVersos = 0
+verso.innerHTML = letra[indexCanciones][indexVersos]
 document.addEventListener('keydown', (event) => {
-    if (event.key === 'g') {
-        verso.innerHTML = letra[0][index]
-        if(index < letra[0].length - 1){
-            index ++
+    if (event.key === 'ArrowDown') {
+        if(indexVersos < letra[indexCanciones].length - 1){
+            indexVersos ++
+            verso.innerHTML = letra[indexCanciones][indexVersos]
+        }
+    }else if (event.key === 'ArrowUp') {
+        if(indexVersos > 0){
+            indexVersos --
+            verso.innerHTML = letra[indexCanciones][indexVersos]
+        }
+    }else if (event.key === 'ArrowRight'){
+        if(indexCanciones < Object.keys(letra).length - 1){
+            indexCanciones ++
+            indexVersos = 0
+            verso.innerHTML = letra[indexCanciones][indexVersos]
+        }
+    }else if (event.key === 'ArrowLeft'){
+        if(indexCanciones > 0){
+            indexCanciones --
+            indexVersos = 0
+            verso.innerHTML = letra[indexCanciones][indexVersos]
         }
     }
 })
