@@ -1,21 +1,32 @@
 body{
     text-align: center;
 }
-#verseHolder{
+#songContainer{
     margin: auto;
     width: 60vw;
-    height: 50vh;
+    height: 60vh;
     vertical-align: middle;
     background-color: rgb(212, 212, 212);
     color: rgb(83, 83, 83);
     border-radius: 5px;
-    display: flex;
-    align-items:center;
-    justify-content:center;
     padding-bottom: 20px;
     line-height: 3em;
     box-shadow: 2px 2px 5px rgb(180, 180, 180);
 }
+#verso{
+    height: 40vh;
+}
 .hide{
     visibility: hidden;
+}
+.dot{
+    height: 1em;
+    width: 1em;
+    clip-path: circle(50%);
+    background-color: #bbb;
+    display: inline-block;
+    margin: 0 1em;
+}
+.colored{
+    background-color: rgb(199, 41, 41);
 }
