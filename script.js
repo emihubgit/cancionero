@@ -1,6 +1,7 @@
 //--------------------Query Selectors--------------------
 const tonalidad = document.querySelector('#tonalidad')
 let verso = document.querySelector('#verso')
+const dotsContainer = document.querySelector('#dotsContainer')
 
 //--------------------Songs--------------------
 const letra = {
@@ -60,6 +61,7 @@ let indexVersos = 0
 //--------------------Modifying HTML--------------------
 tonalidad.innerHTML = letra[indexCanciones].tonalidad
 verso.innerHTML = letra[indexCanciones].versos[indexVersos]
+
 //--------------------Simple functions--------------------
 const incrementarIndexCanciones = () => {
     indexCanciones ++
@@ -78,6 +80,18 @@ const indexVersosCero = () => {
 }
 const cambiarInnerHTML = () => {
     verso.innerHTML = letra[indexCanciones].versos[indexVersos]
+}
+const crearPuntos = () => {
+    for(let i = 0; i < letra[indexCanciones].versos.length; ++i){
+        let dot = document.createElement('span')
+        dot.setAttribute('class', `dot dot${i}`)
+        dotsContainer.appendChild(dot)
+    }
+}
+const colorear = () => {
+    const colored = document.querySelector(`.dot${indexVersos}`)
+    colored.classList.toggle('colored')
+
 }
 
 //--------------------Combining simple functions--------------------
@@ -109,9 +123,11 @@ const volverCancion = () => {
 }
 
 //--------------------Event Listeners--------------------
+document.addEventListener('onload', crearPuntos(), colorear())
 document.addEventListener('keydown', (event) => {
     if (event.key === 'ArrowDown') {
         pasarVerso()
+        colorear()
     }else if (event.key === 'ArrowUp') {
         volverVerso()
     }else if (event.key === 'ArrowRight'){
