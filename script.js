@@ -88,10 +88,16 @@ const crearPuntos = () => {
         dotsContainer.appendChild(dot)
     }
 }
+const eliminarPuntos = () => {
+    dotsContainer.replaceChildren()
+}
 const colorear = () => {
     const colored = document.querySelector(`.dot${indexVersos}`)
     colored.classList.toggle('colored')
-
+}
+const quitarColor = () => {
+    const unColored = document.querySelector(`.dot${indexVersos + 1}`)
+    unColored.classList.remove('colored')
 }
 
 //--------------------Combining simple functions--------------------
@@ -121,6 +127,11 @@ const volverCancion = () => {
         cambiarInnerHTML()
     }
 }
+const cambiarPuntos = () => {
+    eliminarPuntos()
+    crearPuntos()
+    colorear()
+}
 
 //--------------------Event Listeners--------------------
 document.addEventListener('onload', crearPuntos(), colorear())
@@ -130,10 +141,13 @@ document.addEventListener('keydown', (event) => {
         colorear()
     }else if (event.key === 'ArrowUp') {
         volverVerso()
+        quitarColor()
     }else if (event.key === 'ArrowRight'){
         pasarCancion()
+        cambiarPuntos()
     }else if (event.key === 'ArrowLeft'){
         volverCancion()
+        cambiarPuntos()
     }else if(event.key === 't'){
         tonalidad.classList.toggle('hide')
     }
