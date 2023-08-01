@@ -93,7 +93,7 @@ const eliminarPuntos = () => {
 }
 const colorear = () => {
     const colored = document.querySelector(`.dot${indexVersos}`)
-    colored.classList.toggle('colored')
+    colored.classList.add('colored')
 }
 const quitarColor = () => {
     const unColored = document.querySelector(`.dot${indexVersos + 1}`)
@@ -132,7 +132,6 @@ const cambiarPuntos = () => {
     crearPuntos()
     colorear()
 }
-
 //--------------------Event Listeners--------------------
 document.addEventListener('onload', crearPuntos(), colorear())
 document.addEventListener('keydown', (event) => {
