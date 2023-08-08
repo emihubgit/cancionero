@@ -1351,6 +1351,8 @@ const letra = {
         ]
     },
 }
+//--------------------Playlists------------------
+let playlistKey = []
 //--------------------Indexes--------------------
 let indexCanciones = 0
 let indexVersos = 0
@@ -1448,5 +1450,14 @@ document.addEventListener('keydown', (event) => {
         console.log(indexCanciones)
     }else if(event.key === 't'){
         tonalidad.classList.toggle('hide')
-    }
+    }else if(event.key === 'a' || event.key === 'b' || event.key === 'c' || event.key === 'd' ||
+     event.key === 'e' || event.key === 'f' || event.key === 'g'){
+        playlistKey = []
+        for (const [key, value] of Object.entries(letra)) {
+            if (value.tonalidad === event.key.toUpperCase()) {
+              playlistKey.push(key)
+            }
+        }
+        console.log(playlistKey)
+     }
 })
