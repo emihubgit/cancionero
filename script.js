@@ -1374,10 +1374,10 @@ console.log(playlistKey);
 //--------------------Indexes--------------------
 let indexCanciones = 0
 let indexVersos = 0
-
+let currentPlaylistKey = 'C'
 //--------------------Modifying HTML--------------------
-tonalidad.innerHTML = letra[playlistKey['A'][indexCanciones]].tonalidad
-verso.innerHTML = letra[playlistKey['A'][indexCanciones]].versos[indexVersos]
+tonalidad.innerHTML = letra[playlistKey[currentPlaylistKey][indexCanciones]].tonalidad
+verso.innerHTML = letra[playlistKey[currentPlaylistKey][indexCanciones]].versos[indexVersos]
 //--------------------Simple functions--------------------
 const incrementarIndexCanciones = () => {
     indexCanciones ++
@@ -1394,14 +1394,17 @@ const disminuirIndexVersos = () => {
 const indexVersosCero = () => {
     indexVersos = 0
 }
+const indexCancionesCero = () => {
+    indexCanciones = 0
+}
 const cambiarInnerHTML = () => {
     // verso.innerHTML = letra[indexCanciones].versos[indexVersos]
     // tonalidad.innerHTML = letra[indexCanciones].tonalidad
-    tonalidad.innerHTML = letra[playlistKey['A'][indexCanciones]].tonalidad
-    verso.innerHTML = letra[playlistKey['A'][indexCanciones]].versos[indexVersos]
+    tonalidad.innerHTML = letra[playlistKey[currentPlaylistKey][indexCanciones]].tonalidad
+    verso.innerHTML = letra[playlistKey[currentPlaylistKey][indexCanciones]].versos[indexVersos]
 }
 const crearPuntos = () => {
-    for(let i = 0; i < letra[playlistKey['A'][indexCanciones]].versos.length; ++i){
+    for(let i = 0; i < letra[playlistKey[currentPlaylistKey][indexCanciones]].versos.length; ++i){
         let dot = document.createElement('span')
         dot.setAttribute('class', `dot dot${i}`)
         dotsContainer.appendChild(dot)
@@ -1421,7 +1424,7 @@ const quitarColor = () => {
 
 //--------------------Combining simple functions--------------------
 const pasarVerso = () => {
-    if(indexVersos < letra[playlistKey['A'][indexCanciones]].versos.length - 1){
+    if(indexVersos < letra[playlistKey[currentPlaylistKey][indexCanciones]].versos.length - 1){
         incrementarIndexVersos()
         cambiarInnerHTML()
     }
@@ -1438,7 +1441,7 @@ const cambiarPuntos = () => {
     colorear()
 }
 const pasarCancion = () => {
-    if(indexCanciones < playlistKey['A'].length - 1){
+    if(indexCanciones < playlistKey[currentPlaylistKey].length - 1){
         incrementarIndexCanciones()
         indexVersosCero()
         cambiarInnerHTML()
@@ -1451,6 +1454,16 @@ const volverCancion = () => {
         indexVersosCero()
         cambiarInnerHTML()
         cambiarPuntos()
+    }
+}
+const changePlaylistKey = (newPlaylistKey) => {
+    if(letra[playlistKey[newPlaylistKey][indexCanciones]]){
+        currentPlaylistKey = newPlaylistKey
+        indexVersosCero()
+        indexCancionesCero()
+        cambiarPuntos()
+    }else{
+        window.alert(`La lista de canciones en ${newPlaylistKey} está vacía.`)
     }
 }
 //--------------------Event Listeners--------------------
@@ -1474,6 +1487,35 @@ document.addEventListener('keydown', (event) => {
         case 't':
             tonalidad.classList.toggle('hide')
             break;
+        case '1':
+            changePlaylistKey('A')
+            cambiarInnerHTML()
+            break;
+        case '2':
+            changePlaylistKey('B')
+            cambiarInnerHTML()
+            break;
+        case '3':
+            changePlaylistKey('C')
+            cambiarInnerHTML()
+            break;
+        case '4':
+            changePlaylistKey('D')
+            cambiarInnerHTML()
+            break;
+        case '5':
+            changePlaylistKey('E')
+            cambiarInnerHTML()
+            break;
+        case '6':
+            changePlaylistKey('F')
+            cambiarInnerHTML()
+            break;
+        case '7':
+            changePlaylistKey('G')
+            cambiarInnerHTML()
+            break;
+        
     }
     // if (event.key === 'ArrowDown') {
     //     pasarVerso()
