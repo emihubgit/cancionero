@@ -2,6 +2,7 @@
 const tonalidad = document.querySelector('#tonalidad')
 let verso = document.querySelector('#verso')
 const dotsContainer = document.querySelector('#dotsContainer')
+const comandos = document.querySelector('#comandos')
 
 //--------------------Songs--------------------
 const letra = {
@@ -1359,7 +1360,7 @@ let playlistKey = {
     D: [],
     E: [],
     F: [],
-    G: [],
+    G: []
 }
 
 for (const keyIndex in letra) {
@@ -1367,6 +1368,7 @@ for (const keyIndex in letra) {
     if (playlistKey.hasOwnProperty(tonalidad)) {
         playlistKey[tonalidad].push(keyIndex)
     }
+    console.log(playlistKey)
 }
 
 console.log(playlistKey);
@@ -1514,6 +1516,9 @@ document.addEventListener('keydown', (event) => {
         case '7':
             changePlaylistKey('G')
             cambiarInnerHTML()
+            break;
+        case 'c':
+            comandos.classList.toggle('showCommands')
             break;
         
     }
