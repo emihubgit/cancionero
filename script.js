@@ -1350,7 +1350,7 @@ const letra = {
                 ¡Eres el salvador! //
             </h1>`,
         ]
-    },
+    }
 }
 //--------------------Playlists------------------
 let playlistKey = {
@@ -1378,7 +1378,7 @@ console.log(playlistKey);
 //--------------------Indexes--------------------
 let indexCanciones = 0
 let indexVersos = 0
-let currentPlaylistKey = 'C'
+let currentPlaylistKey = 'allSongs'
 //--------------------Modifying HTML--------------------
 tonalidad.innerHTML = letra[playlistKey[currentPlaylistKey][indexCanciones]].tonalidad
 verso.innerHTML = letra[playlistKey[currentPlaylistKey][indexCanciones]].versos[indexVersos]
