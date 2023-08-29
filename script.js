@@ -1354,7 +1354,8 @@ const letra = {
 }
 //--------------------Playlists------------------
 let playlistKey = {
-    A: ['8', '11', '15', '23', '25', '28'],
+    allSongs: [],
+    A: [],
     B: [],
     C: [],
     D: [],
@@ -1363,12 +1364,13 @@ let playlistKey = {
     G: []
 }
 
+
 for (const keyIndex in letra) {
+    playlistKey.allSongs.push(keyIndex)
     const tonalidad = letra[keyIndex]['tonalidad']
     if (playlistKey.hasOwnProperty(tonalidad)) {
         playlistKey[tonalidad].push(keyIndex)
     }
-    console.log(playlistKey)
 }
 
 console.log(playlistKey);
@@ -1515,6 +1517,10 @@ document.addEventListener('keydown', (event) => {
             break;
         case '7':
             changePlaylistKey('G')
+            cambiarInnerHTML()
+            break;
+        case '0':
+            changePlaylistKey('allSongs')
             cambiarInnerHTML()
             break;
         case 'c':
