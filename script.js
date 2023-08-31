@@ -1461,11 +1461,12 @@ const volverCancion = () => {
     }
 }
 const changePlaylistKey = (newPlaylistKey) => {
+    indexCancionesCero()
     if(letra[playlistKey[newPlaylistKey][indexCanciones]]){
         currentPlaylistKey = newPlaylistKey
         indexVersosCero()
-        indexCancionesCero()
         cambiarPuntos()
+        cambiarInnerHTML()
     }else{
         window.alert(`La lista de canciones en ${newPlaylistKey} está vacía.`)
     }
@@ -1493,31 +1494,24 @@ document.addEventListener('keydown', (event) => {
             break;
         case '1':
             changePlaylistKey('A')
-            cambiarInnerHTML()
             break;
         case '2':
             changePlaylistKey('B')
-            cambiarInnerHTML()
             break;
         case '3':
             changePlaylistKey('C')
-            cambiarInnerHTML()
             break;
         case '4':
             changePlaylistKey('D')
-            cambiarInnerHTML()
             break;
         case '5':
             changePlaylistKey('E')
-            cambiarInnerHTML()
             break;
         case '6':
             changePlaylistKey('F')
-            cambiarInnerHTML()
             break;
         case '7':
             changePlaylistKey('G')
-            cambiarInnerHTML()
             break;
         case '0':
             changePlaylistKey('allSongs')
