@@ -1361,7 +1361,8 @@ let playlistKey = {
     D: [],
     E: [],
     F: [],
-    G: []
+    G: [],
+    custom: []
 }
 
 
@@ -1520,8 +1521,13 @@ document.addEventListener('keydown', (event) => {
         case 'c':
             comandos.classList.toggle('showCommands')
             break;
-        
-    }
+        case 'a':
+            playlistKey['custom'].push(playlistKey[currentPlaylistKey][indexCanciones])
+            break;
+        case 's':
+            currentPlaylistKey = 'custom'
+            break;
+        }
     // if (event.key === 'ArrowDown') {
     //     pasarVerso()
     //     colorear()
