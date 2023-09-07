@@ -1,6 +1,6 @@
 body{
     text-align: center;
-    overflow: hidden;
+    overflow: scroll;
     background-color: #f5f5f5;
 }
 #songContainer{
@@ -17,6 +17,13 @@ body{
 }
 #verso{
     height: 40vh;
+}
+.fullScreen{
+    width: 100vw !important;
+    height: 100vh !important;
+    overflow: hidden;
+    margin: 0;
+    padding: 0 !important;
 }
 h1{
     font-size: 1.5em;
@@ -58,4 +65,14 @@ table, td{
     border: 1px solid;
     border-collapse: collapse;
     padding: 10px;
+}
+#miLista{
+    width: max-content;
+    height: max-content;
+    margin: 2em auto;
+    /* background-color: rgb(220, 232, 233);
+    border-radius: 5px;
+    padding: 20px 20px 20px 20px; */
+    line-height: 3em;
+    color: rgb(83, 83, 83);
 }

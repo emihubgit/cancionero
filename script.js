@@ -1,9 +1,11 @@
 //--------------------Query Selectors--------------------
+const body = document.querySelector('body')
 const tonalidad = document.querySelector('#tonalidad')
 let verso = document.querySelector('#verso')
 const dotsContainer = document.querySelector('#dotsContainer')
 const comandos = document.querySelector('#comandos')
-
+const miLista = document.querySelector('#miLista')
+const songContainer = document.querySelector('#songContainer')
 //--------------------Songs--------------------
 const letra = {
     0: {
@@ -1523,9 +1525,15 @@ document.addEventListener('keydown', (event) => {
             break;
         case 'a':
             playlistKey['custom'].push(playlistKey[currentPlaylistKey][indexCanciones])
+            let songName = letra[playlistKey[currentPlaylistKey][indexCanciones]].versos.toString().split('<br/>', 1)
+            miLista.innerHTML += songName
             break;
         case 's':
-            currentPlaylistKey = 'custom'
+            changePlaylistKey('custom')
+            break;
+        case 'f':
+            songContainer.classList.toggle('fullScreen')
+            body.classList.toggle('fullScreen')
             break;
         }
     // if (event.key === 'ArrowDown') {
