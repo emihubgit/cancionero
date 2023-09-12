@@ -1534,7 +1534,10 @@ document.addEventListener('keydown', (event) => {
         case 'f':
             songContainer.classList.toggle('fullScreen')
             body.classList.toggle('fullScreen')
+            dotsContainer.classList.toggle('dotsFullScreen')
             break;
+        case 'l':
+            miLista.classList.toggle('show')
         }
     // if (event.key === 'ArrowDown') {
     //     pasarVerso()
